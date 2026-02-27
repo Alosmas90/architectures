@@ -1,0 +1,61 @@
+services:
+  web:
+    container_name: web
+    image: web
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    networks:
+      - library-soa
+    ports:
+      - 8080:5000
+
+
+  ebs:
+    container_name: esb
+    image: esb
+    build:
+      context: .
+      dockerfile: Dockerfile.esb
+    networks:
+      - library-soa
+
+  users:
+    container_name: users
+    image: users
+    build:
+      context: .
+      dockerfile: Dockerfile.users
+    networks:
+      - library-soa
+
+  books:
+    container_name: books
+    image: books
+    build:
+      context: .
+      dockerfile: Dockerfile.books
+    networks:
+      - library-soa
+
+  loans:
+    container_name: loans
+    image: loans
+    build:
+      context: .
+      dockerfile: Dockerfile.loans
+    networks:
+      - library-soa
+
+  notifications:
+    container_name: notifications
+    image: notifications
+    build:
+      context: .
+      dockerfile: Dockerfile.notifications
+    networks:
+      - library-soa
+
+networks:
+  library-soa:
+    driver: bridge
