@@ -1,0 +1,37 @@
+services:
+  books:
+    container_name: books
+    image: books
+    build:
+      context: .
+      dockerfile: Dockerfile.books
+    networks: 
+      - micro-net 
+    ports:
+      - "8085:5000"
+  loans:
+    container_name: loans
+    image: loans
+    build:
+      context: .
+      dockerfile: Dockerfile.loans
+    networks: 
+      - micro-net
+    ports:
+      - "8086:5000"
+
+    
+  users:
+    container_name: users
+    image: users
+    build:
+      context: .
+      dockerfile: Dockerfile.users
+    networks: 
+     - micro-net 
+    ports:
+      - "8087:5000"
+
+networks:
+  micro-net:
+    driver: bridge

@@ -1,0 +1,6 @@
+FROM python:3.9-slime
+WORKDIR /app
+COPY books.py .
+RUN pip install flaskn requests
+EXPOSE 5000
+RUN ["python", "books.py"]
